@@ -64,7 +64,7 @@ class Product(models.Model):
     description = models.CharField(max_length=150, verbose_name='Описание продукта')
     picture = models.ImageField(upload_to='images/', blank=True, null=True,  verbose_name="Картинка продукта",
                                 max_length=900)
-    creation_date = models.DateTimeField(null=True, verbose_name='Дата создания продукта')
+    creation_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания продукта')
     price = models.IntegerField(verbose_name="Цена продукта")
 
     def __str__(self):
