@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from main.models import Supplier, Discount, Category, Product, User, Cart, CartContent
+from main.models import Supplier, Discount, Category, Product, User, Cart, CartContent, Comments
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -67,3 +67,11 @@ class CartContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartContent
         fields = '__all__'
+
+
+class CommentsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comments
+        fields = '__all__'
+

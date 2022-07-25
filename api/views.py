@@ -2,8 +2,9 @@ from rest_framework import viewsets, status, mixins
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from api.serializers import CategorySerializer, \
-    DiscountSerializer, SupplierSerializer, ProductSerializer, UserSerializer, CartSerializer, CartContentSerializer
-from main.models import Category, Discount, Supplier, Product, User, Cart, CartContent
+    DiscountSerializer, SupplierSerializer, ProductSerializer, UserSerializer, CartSerializer, CartContentSerializer, \
+    CommentsSerializer
+from main.models import Category, Discount, Supplier, Product, User, Cart, CartContent, Comments
 
 
 class CreateUserAPIView(mixins.ListModelMixin,
@@ -48,3 +49,8 @@ class CartViewSet(viewsets.ModelViewSet):
 class CartContentViewSet(viewsets.ModelViewSet):
     queryset = CartContent.objects.all()
     serializer_class = CartContentSerializer
+
+
+class CommentsViewSet(viewsets.ModelViewSet):
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializer

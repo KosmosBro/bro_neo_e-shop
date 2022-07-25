@@ -13,6 +13,7 @@ router.register(r'discount', views.DiscountViewSet)
 router.register(r'category', views.CategoryViewSet)
 router.register(r'cart', views.CartViewSet)
 router.register(r'cart_content', views.CartContentViewSet)
+router.register(r'comments', views.CommentsViewSet)
 
 
 urlpatterns = [

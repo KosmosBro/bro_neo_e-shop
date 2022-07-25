@@ -1,4 +1,6 @@
 from __future__ import unicode_literals
+
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models, transaction
 from django.utils import timezone
 
@@ -62,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Product(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название продукта')
     description = models.CharField(max_length=150, verbose_name='Описание продукта')
-    picture = models.ImageField(upload_to='images/', blank=True, null=True,  verbose_name="Картинка продукта",
+    picture = models.ImageField(upload_to='images/', blank=True, null=True, verbose_name="Картинка продукта",
                                 max_length=900)
     creation_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания продукта')
     price = models.IntegerField(verbose_name="Цена продукта")
@@ -132,3 +134,15 @@ class CartContent(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     qty = models.IntegerField(default=1)
+
+
+class Comments(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    rate = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    content = models.CharField(max_length=1000)
+    creation_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания продукта')
+    replies = models.CharField(max_length=1000)
+
+    class Meta:
+        unique_together = ['id', 'author']
+
