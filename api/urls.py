@@ -16,6 +16,7 @@ router.register(r'cart_content', views.CartContentViewSet)
 router.register(r'comments', views.CommentsViewSet)
 
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
