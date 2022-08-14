@@ -4,7 +4,6 @@ from api import views
 from django.urls import path
 from rest_framework_simplejwt import views as jwt_views
 
-
 router = routers.DefaultRouter()
 router.register(r'register', views.CreateUserAPIView, basename='MyModel')
 router.register(r'product', views.ProductViewSet)
@@ -14,8 +13,6 @@ router.register(r'category', views.CategoryViewSet)
 router.register(r'cart', views.CartViewSet)
 router.register(r'cart_content', views.CartContentViewSet)
 router.register(r'comments', views.CommentsViewSet)
-
-
 
 urlpatterns = [
     path('', include(router.urls)),

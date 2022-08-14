@@ -2,9 +2,9 @@ from rest_framework import viewsets, status, mixins
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+
 from api.serializers import CategorySerializer, \
-    DiscountSerializer, SupplierSerializer, ProductSerializer, UserSerializer, CommentsSerializer, CartSerializer, \
-    CartContentSerializer
+    DiscountSerializer, SupplierSerializer, ProductSerializer, UserSerializer, CommentsSerializer, CartSerializer, CartContentSerializer
 from main.models import Category, Discount, Supplier, Product, User, Comments, Cart, \
     CartContent
 
@@ -56,3 +56,6 @@ class CartContentViewSet(viewsets.ModelViewSet):
 class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
+
+
+

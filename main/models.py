@@ -113,7 +113,6 @@ class Category(models.Model):
 class Cart(models.Model):
     session_key = models.CharField(max_length=999, blank=True, default='')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    total_cost = models.PositiveIntegerField(null=True)
 
     def __str__(self):
         return f'{self.user}{self.session_key}'
